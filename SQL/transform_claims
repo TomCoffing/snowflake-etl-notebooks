@@ -1,0 +1,9 @@
+-- Convert claim amount to thousands and flag large claims
+SELECT 
+  CLAIM_ID,
+  CLAIM_AMT / 1000 AS CLAIM_K,
+  CASE 
+    WHEN CLAIM_AMT > 5000 THEN 'HIGH'
+    ELSE 'NORMAL'
+  END AS CLAIM_FLAG
+FROM SQL_CLASS.CLAIMS;
